@@ -1,3 +1,8 @@
+# working directory and log exclusions
+*.log
+**/working/
+
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]

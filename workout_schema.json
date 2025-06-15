@@ -1,0 +1,148 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "$ref": "#/definitions/Welcome",
+    "definitions": {
+        "Welcome": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "workout": {
+                    "$ref": "#/definitions/Workout"
+                },
+                "fileVersion": {
+                    "type": "integer"
+                },
+                "packageName": {
+                    "type": "string"
+                },
+                "platform": {
+                    "type": "integer"
+                },
+                "type": {
+                    "type": "integer"
+                },
+                "versionCode": {
+                    "type": "integer"
+                },
+                "versionName": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "fileVersion",
+                "packageName",
+                "platform",
+                "type",
+                "versionCode",
+                "versionName",
+                "workout"
+            ],
+            "title": "Welcome"
+        },
+        "Workout": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "colorId": {
+                    "type": "integer"
+                },
+                "coolDown": {
+                    "type": "integer"
+                },
+                "cycles": {
+                    "type": "integer"
+                },
+                "doNotRepeatFirstPrepareAndLastCoolDown": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "intervalsSetsCount": {
+                    "type": "integer"
+                },
+                "isFavorite": {
+                    "type": "boolean"
+                },
+                "isRestRepsMode": {
+                    "type": "boolean"
+                },
+                "isWorkRepsMode": {
+                    "type": "boolean"
+                },
+                "prepare": {
+                    "type": "integer"
+                },
+                "rest": {
+                    "type": "integer"
+                },
+                "restBetweenTabatas": {
+                    "type": "integer"
+                },
+                "restBetweenWorkoutsReps": {
+                    "type": "integer"
+                },
+                "restBetweenWorkoutsRepsMode": {
+                    "type": "boolean"
+                },
+                "restBetweenWorkoutsTime": {
+                    "type": "integer"
+                },
+                "restBpm": {
+                    "type": "integer"
+                },
+                "restReps": {
+                    "type": "integer"
+                },
+                "skipLastRestInterval": {
+                    "type": "boolean"
+                },
+                "skipPrepareAndCoolDownBetweenWorkouts": {
+                    "type": "boolean"
+                },
+                "tabatasCount": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "work": {
+                    "type": "integer"
+                },
+                "workBpm": {
+                    "type": "integer"
+                },
+                "workReps": {
+                    "type": "integer"
+                }
+            },
+            "required": [
+                "colorId",
+                "coolDown",
+                "cycles",
+                "doNotRepeatFirstPrepareAndLastCoolDown",
+                "id",
+                "intervalsSetsCount",
+                "isFavorite",
+                "isRestRepsMode",
+                "isWorkRepsMode",
+                "prepare",
+                "rest",
+                "restBetweenTabatas",
+                "restBetweenWorkoutsReps",
+                "restBetweenWorkoutsRepsMode",
+                "restBetweenWorkoutsTime",
+                "restBpm",
+                "restReps",
+                "skipLastRestInterval",
+                "skipPrepareAndCoolDownBetweenWorkouts",
+                "tabatasCount",
+                "title",
+                "work",
+                "workBpm",
+                "workReps"
+            ],
+            "title": "Workout"
+        }
+    }
+}

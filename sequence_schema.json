@@ -1,0 +1,216 @@
+{
+    "$schema": "http://json-schema.org/draft-06/schema#",
+    "title": "Workout File Root",
+    "type": "object",
+    "additionalProperties": false,
+    "properties": {
+        "fileVersion": {
+            "type": "integer",
+            "description": "Version of the file format."
+        },
+        "packageName": {
+            "type": "string",
+            "description": "Package or application name associated with the file."
+        },
+        "platform": {
+            "type": "integer",
+            "description": "Platform identifier."
+        },
+        "type": {
+            "type": "integer",
+            "description": "Indicates the main content type of this file: 0 for a single Tabata workout, 1 for a workout Sequence."
+        },
+        "versionCode": {
+            "type": "integer",
+            "description": "Numerical version code of the content."
+        },
+        "versionName": {
+            "type": "string",
+            "description": "Human-readable version name of the content."
+        },
+        "tabataWorkout": {
+            "$ref": "#/definitions/Tabata",
+            "description": "The details of a single Tabata workout (if 'type' is 0)."
+        },
+        "workoutSequence": {
+            "$ref": "#/definitions/SequenceClass",
+            "description": "The sequence of multiple workouts (if 'type' is 1)."
+        }
+    },
+    "required": [
+        "fileVersion",
+        "packageName",
+        "platform",
+        "type",
+        "versionCode",
+        "versionName"
+    ],
+    "oneOf": [
+        {
+            "properties": {
+                "type": { "const": 0 }
+            },
+            "required": ["tabataWorkout"]
+        },
+        {
+            "properties": {
+                "type": { "const": 1 }
+            },
+            "required": ["workoutSequence"]
+        }
+    ],
+    "definitions": {
+        "Tabata": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "colorId": {
+                    "type": "integer"
+                },
+                "coolDown": {
+                    "type": "integer"
+                },
+                "cycles": {
+                    "type": "integer"
+                },
+                "doNotRepeatFirstPrepareAndLastCoolDown": {
+                    "type": "boolean"
+                },
+                "id": {
+                    "type": "integer"
+                },
+                "intervalsSetsCount": {
+                    "type": "integer"
+                },
+                "isFavorite": {
+                    "type": "boolean"
+                },
+                "isRestRepsMode": {
+                    "type": "boolean"
+                },
+                "isWorkRepsMode": {
+                    "type": "boolean"
+                },
+                "prepare": {
+                    "type": "integer"
+                },
+                "rest": {
+                    "type": "integer"
+                },
+                "restBetweenTabatas": {
+                    "type": "integer"
+                },
+                "restBetweenWorkoutsReps": {
+                    "type": "integer"
+                },
+                "restBetweenWorkoutsRepsMode": {
+                    "type": "boolean"
+                },
+                "restBetweenWorkoutsTime": {
+                    "type": "integer"
+                },
+                "restBpm": {
+                    "type": "integer"
+                },
+                "restReps": {
+                    "type": "integer"
+                },
+                "skipLastRestInterval": {
+                    "type": "boolean"
+                },
+                "skipPrepareAndCoolDownBetweenWorkouts": {
+                    "type": "boolean"
+                },
+                "tabatasCount": {
+                    "type": "integer"
+                },
+                "title": {
+                    "type": "string"
+                },
+                "work": {
+                    "type": "integer"
+                },
+                "workBpm": {
+                    "type": "integer"
+                },
+                "workReps": {
+                    "type": "integer"
+                },
+                "workDescription": {
+                    "type": "string"
+                },
+                "restDescription": {
+                    "type": "string"
+                }
+            },
+            "required": [
+                "colorId",
+                "coolDown",
+                "cycles",
+                "doNotRepeatFirstPrepareAndLastCoolDown",
+                "id",
+                "intervalsSetsCount",
+                "isFavorite",
+                "isRestRepsMode",
+                "isWorkRepsMode",
+                "prepare",
+                "rest",
+                "restBetweenTabatas",
+                "restBetweenWorkoutsReps",
+                "restBetweenWorkoutsRepsMode",
+                "restBetweenWorkoutsTime",
+                "restBpm",
+                "restReps",
+                "skipLastRestInterval",
+                "skipPrepareAndCoolDownBetweenWorkouts",
+                "tabatasCount",
+                "title",
+                "work",
+                "workBpm",
+                "workReps"
+            ],
+            "title": "Tabata"
+        },
+        "SequenceClass": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+                "id": {
+                    "type": "integer",
+                    "description": "Unique identifier for this workout sequence."
+                },
+                "title": {
+                    "type": "string",
+                    "description": "Title of this workout sequence."
+                },
+                "sequenceIds": {
+                    "type": "array",
+                    "items": {
+                        "type": "integer"
+                    },
+                    "description": "Ordered list of IDs referring to the Tabata workouts included in this sequence. These should match the 'id' property of Tabata objects in the 'tabatas' array, or external references if the Tabatas are not embedded."
+                },
+                "tabatasCount": {
+                    "type": "integer",
+                    "description": "Total number of Tabata workouts in this sequence. This should ideally match the number of items in the 'tabatas' array."
+                },
+                "tabatas": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/Tabata"
+                    },
+                    "minItems": 1,
+                    "description": "The ordered list of Tabata workouts that constitute this sequence."
+                }
+            },
+            "required": [
+                "id",
+                "title",
+                "sequenceIds",
+                "tabatasCount",
+                "tabatas"
+            ],
+            "title": "SequenceClass"
+        }
+    }
+}
